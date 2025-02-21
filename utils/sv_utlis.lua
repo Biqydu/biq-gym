@@ -139,3 +139,19 @@ function IsPlayerHaveGymPass()
     HasItem(Config.GymPass)
 end
 
+function GetPlayerCid(source)
+    if Config.Framework == 'qb' then
+        local playerCid = QBCore.Functions.GetPlayer(source).PlayerData.citizenid
+        print("QBCore Citizen ID: " .. playerCid)  -- Debugowanie
+        return playerCid
+    elseif Config.Framework == 'qbox' then
+        local playerCid = exports.qbx_core:GetPlayer(source).PlayerData.citizenid
+        print("QBox Citizen ID: " .. playerCid)  -- Debugowanie
+        return playerCid
+    elseif Config.Framework == 'esx' then
+        local xPlayer = ESX.GetPlayerFromId(source)
+        local playerCid = xPlayer.getIdentifier()
+        print("ESX Identifier: " .. playerCid)  -- Debugowanie
+        return playerCid
+    end
+end

@@ -1,0 +1,10 @@
+{
+  "gym": "Siłownia",
+  "push-ups": "Pompki",
+  "pull-ups": "Podciąganie",
+  "crunches": "Brzuszki",
+  "workout_done": "Wykonałeś ćwiczenie %s",
+  "no_enough_money": "Nie masz wystarczająco pieniędzy, aby kupić karnet nae siłownie",
+  "bought_gym_pass": "Kupiłeś karnet na siłownie",
+  "workout_reached": "Osiągnięto %s treningów w %s minut"
+}

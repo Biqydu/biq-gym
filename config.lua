@@ -2,9 +2,9 @@ Config = {}
 
 Config.Debug = true
 
--- Nice debug function so you dont need to check if Config.Debug is true on every print
-function debug(...)
-    if Config.Debug then print('^3[DEBUG]^7', ...) end
+
+function debug(msg)
+    if Config.Debug then print('^3[DEBUG]^7', msg) end
 end
 
 Config.Framework = 'qbox'            -- qb , qbox, esx
@@ -13,8 +13,11 @@ Config.Inventory = 'ox'            -- ox , qb, esx
 Config.ProgressType = 'ox-circle'      -- ox-normal , ox-circle , qb
 Config.OxCirclePosition = 'bottom' -- only matters if Config.ProgressType = 'ox-circle'
 
-Config.GymPass = 'gym_pass'
+Config.GymPass = 'gym_pass' -- item name
 Config.GymPassPrice = 100
+
+Config.MaxWorks = 5
+Config.Cooldown = 10
 
 Config.Seller = {
     model = 'u_m_y_party_01',
@@ -26,7 +29,7 @@ Config.Seller = {
     }
 }
 
-Config.WorkPositions = {
+Config.WorkPositions = { -- types: push-ups, pull-ups, crunches
     {
         type = 'push-ups',
         coords = vec3(-1204.91, -1560.37, 3.61),
@@ -65,5 +68,9 @@ Config.Progressbars = {
         duration = 10000,
         label = 'Doing crunches...',
         anim = {'amb@world_human_sit_ups@male@idle_a', 'idle_a', 1}
+    },
+    ['buying'] = {
+        duration = 5000,
+        label = 'Buying gym pass...',
     }
 }

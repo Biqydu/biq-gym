@@ -1,0 +1,10 @@
+{
+  "gym": "Gym",
+  "push-ups": "Push-ups",
+  "pull-ups": "Pull-ups",
+  "crunches": "Crunches",
+  "workout_done": "You have done %s",
+  "no_enough_money": "You do not have enough money to buy a gym pass",
+  "bought_gym_pass": "You bought a gym pass",
+  "workout_reached": "You reached %s workouts in %s minutes"
+}
