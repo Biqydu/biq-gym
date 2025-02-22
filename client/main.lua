@@ -8,10 +8,6 @@ lib.locale()
 
 local workTimes = {}
 
--- local function UpdatePlayerStats(stats)
---   lib.callback.await('biq-gym:server:setPlayerStats', false, stats)
--- end
-
 local function CanWork()
   local now = GetGameTimer()
   for i = #workTimes, 1, -1 do
@@ -97,6 +93,13 @@ local function SpawnGymSeller()
   })
 end
 
+
+CreateThread(function()
+if Config.Blip then 
+  CreateBlip(Config.Blip.coords.xyz, Config.Blip.label, Config.Blip.icon, Config.Blip.color, Config.Blip.scale, Config.Blip.shortRange)
+  end
+end)
+
 AddEventHandler('onResourceStart', function(resourceName)
   if (GetCurrentResourceName() ~= resourceName) then return end
   SpawnGymSeller()
@@ -107,6 +110,3 @@ AddEventHandler('onResourceStop', function(resourceName)
   if (GetCurrentResourceName() ~= resourceName) then return end
 end)
 
-RegisterCommand('stats', function(source)
-  lib.callback.await('biq-gym:server:getPlayerStats', source)
-end, false)

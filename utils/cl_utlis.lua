@@ -152,6 +152,22 @@ function SpawnPed(model, coords)
     return ped
 end
 
+
+
+function CreateBlip(coords, name, icon, color, scale, shortRange)
+    local blip = AddBlipForCoord(coords.x, coords.y, coords.z)
+    SetBlipSprite(blip, icon)
+    SetBlipScale(blip, scale or 0.8)
+    SetBlipColour(blip, color or 0)
+    SetBlipAsShortRange(blip, shortRange or true)
+
+    BeginTextCommandSetBlipName("STRING")
+    AddTextComponentString(name or "Blip")
+    EndTextCommandSetBlipName(blip)
+
+    return blip
+end
+
 function IsPlayerHaveGymPass()
     return HasItem(Config.GymPass)
 end

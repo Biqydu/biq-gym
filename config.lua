@@ -29,6 +29,15 @@ Config.Seller = {
     }
 }
 
+Config.Blip = { -- set to false to disable
+    coords = vec3(-1205.73, -1572.39, 4.61),
+    label = 'Gym',
+    icon = 311,
+    scale = 0.8,
+    color = 0,
+    shortRange = true
+}
+
 Config.WorkPositions = { -- types: push-ups, lift, crunches
     {
         type = 'push-ups',
