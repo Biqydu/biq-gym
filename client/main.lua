@@ -36,22 +36,23 @@ local function BuyGymPass()
 end
 
 local function DoWork(type)
-if CanWork() then 
-  if type == 'push-ups' then
-      if Progress(Config.Progressbars['push-ups'].duration, Config.Progressbars['push-ups'].label, Config.Progressbars['push-ups'].anim) then
-          Notify('Gym', locale('workout_done', locale('push-ups')), 'success')
-          -- UpdatePlayerStats({maxHp = GetEntityMaxHealth(cache.ped) + 5})
+  if CanWork() then 
+      local success = false
+
+      if type == 'push-ups' then
+          success = Progress(Config.Progressbars['push-ups'].duration, Config.Progressbars['push-ups'].label, Config.Progressbars['push-ups'].anim)
+      elseif type == 'lift' then
+          success = Progress(Config.Progressbars['lift'].duration, Config.Progressbars['lift'].label, Config.Progressbars['lift'].anim, Config.Progressbars['lift'].prop)
+      elseif type == 'crunches' then
+          success = Progress(Config.Progressbars['crunches'].duration, Config.Progressbars['crunches'].label, Config.Progressbars['crunches'].anim)
       end
-    elseif type == 'lift' then
-      if Progress(Config.Progressbars['lift'].duration, Config.Progressbars['lift'].label, Config.Progressbars['lift'].anim, Config.Progressbars['lift'].prop) then
-        Notify(locale('gym'), locale('workout_done', locale('lift')), 'success')
-      end
-    elseif type == 'crunches' then
-      if Progress(Config.Progressbars['crunches'].duration, Config.Progressbars['crunches'].label, Config.Progressbars['crunches'].anim) then
-        Notify(locale('gym'), locale('workout_done', locale('crunches')), 'success')
+
+      if success then
+          Notify(locale('gym'), locale('workout_done', locale(type)), 'success')
+      else
+          table.remove(workTimes) 
       end
   end
-end
 end
 
 local function CreateWorkTargets()
