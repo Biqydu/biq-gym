@@ -100,7 +100,7 @@ end
 
 CreateThread(function()
 if Config.Blip then 
-  CreateBlip(Config.Blip.coords.xyz, Config.Blip.label, Config.Blip.icon, Config.Blip.color, Config.Blip.scale, Config.Blip.shortRange)
+  CreateBlip(Config.Blip.coords.xyz, locale('gym'), Config.Blip.icon, Config.Blip.color, Config.Blip.scale, Config.Blip.shortRange)
   end
 end)
 
