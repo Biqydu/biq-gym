@@ -1,7 +1,7 @@
 {
   "gym": "Siłownia",
   "push-ups": "Pompki",
-  "pull-ups": "Podciąganie",
+  "lift": "Podnoszenie ciężarów",
   "crunches": "Brzuszki",
   "workout_done": "Wykonałeś ćwiczenie %s",
   "no_enough_money": "Nie masz wystarczająco pieniędzy, aby kupić karnet nae siłownie",

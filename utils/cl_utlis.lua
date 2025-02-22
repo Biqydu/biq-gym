@@ -7,9 +7,20 @@ end
 ---@param duration number # length of progress
 ---@param label string # progress text
 ---@param anim table # {dict, clip}
----@param scenario string # scenario name
-function Progress(duration, label, anim, scenario)
+---@param  prop table #  {model, bone, pos, rot}
+function Progress(duration, label, anim, prop)
     if Config.ProgressType == 'qb' then
+        local propData = {}
+
+        if prop then
+            propData = {
+                model = prop[1],
+                bone = prop[2] or 60309,
+                pos = prop[3] or vec3(0.1, 0, 0),
+                rot = prop[4] or vec3(0, 0, 0)
+            }
+        end
+
         QBCore.Functions.Progressbar(label, label, duration, false, true, {
             disableMovement = true,
             disableCarMovement = false,
@@ -18,7 +29,7 @@ function Progress(duration, label, anim, scenario)
         }, {
             animDict = anim and anim[1] or nil,
             anim = anim and anim[2] or nil,
-        }, {}, {}, function()
+        }, {}, propData, function()
             return true
         end, function()
             return false
@@ -37,15 +48,20 @@ function Progress(duration, label, anim, scenario)
             }
         }
 
-        if scenario then
-            options.anim = {
-                scenario = scenario
-            }
-        elseif anim then
+        if anim then
             options.anim = {
                 dict = anim[1],
                 clip = anim[2],
                 flag = anim[3] or 49
+            }
+        end
+
+        if prop then
+            options.prop = {
+                model = prop[1],
+                bone = prop[2] or 60309, 
+                pos = prop[3] or vec3(0.1, 0, 0),
+                rot = prop[4] or vec3(0, 0, 0)
             }
         end
 
@@ -67,15 +83,20 @@ function Progress(duration, label, anim, scenario)
             }
         }
 
-        if scenario then
-            options.anim = {
-                scenario = scenario 
-            }
-        elseif anim then
+        if anim then
             options.anim = {
                 dict = anim[1],
                 clip = anim[2],
                 flag = anim[3] or 49
+            }
+        end
+
+        if prop then
+            options.prop = {
+                model = prop[1],
+                bone = prop[2] or 60309, 
+                pos = prop[3] or vec3(0.1, 0, 0),
+                rot = prop[4] or vec3(0, 0, 0)
             }
         end
 

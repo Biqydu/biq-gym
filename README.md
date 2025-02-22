@@ -5,7 +5,7 @@
 This script works with the following frameworks:
 
 - **ESX**
-- **QB**
+- **QB** NON TESTED YET
 - **QBox**
 
 ## Features

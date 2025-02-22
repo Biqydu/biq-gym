@@ -1,7 +1,7 @@
 {
   "gym": "Gym",
   "push-ups": "Push-ups",
-  "pull-ups": "Pull-ups",
+  "lift": "Lift",
   "crunches": "Crunches",
   "workout_done": "You have done %s",
   "no_enough_money": "You do not have enough money to buy a gym pass",

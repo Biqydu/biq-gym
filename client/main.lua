@@ -46,9 +46,9 @@ if CanWork() then
           Notify('Gym', locale('workout_done', locale('push-ups')), 'success')
           -- UpdatePlayerStats({maxHp = GetEntityMaxHealth(cache.ped) + 5})
       end
-    elseif type == 'pull-ups' then
-      if Progress(Config.Progressbars['pull-ups'].duration, Config.Progressbars['pull-ups'].label, Config.Progressbars['pull-ups'].anim) then
-        Notify(locale('gym'), locale('workout_done', locale('pull-ups')), 'success')
+    elseif type == 'lift' then
+      if Progress(Config.Progressbars['lift'].duration, Config.Progressbars['lift'].label, Config.Progressbars['lift'].anim, Config.Progressbars['lift'].prop) then
+        Notify(locale('gym'), locale('workout_done', locale('lift')), 'success')
       end
     elseif type == 'crunches' then
       if Progress(Config.Progressbars['crunches'].duration, Config.Progressbars['crunches'].label, Config.Progressbars['crunches'].anim) then

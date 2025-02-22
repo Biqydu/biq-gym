@@ -29,7 +29,7 @@ Config.Seller = {
     }
 }
 
-Config.WorkPositions = { -- types: push-ups, pull-ups, crunches
+Config.WorkPositions = { -- types: push-ups, lift, crunches
     {
         type = 'push-ups',
         coords = vec3(-1204.91, -1560.37, 3.61),
@@ -38,11 +38,11 @@ Config.WorkPositions = { -- types: push-ups, pull-ups, crunches
         label = 'Do Push-Ups',
     },
     {
-        type = 'pull-ups',
-        coords = vec3(-1205.03, -1563.94, 5.0),
+        type = 'lift',
+        coords = vec3(-1210.53, -1561.43, 4.61),
         size = vec3(2, 2, 2),
         distance = 3,
-        label = 'Do Pull-Ups',
+        label = 'Do lift',
     },
     {
         type = 'crunches',
@@ -57,12 +57,13 @@ Config.Progressbars = {
     ['push-ups'] = {
         duration = 10000,
         label = 'Doing Push-Ups...',
-        anim = {'amb@world_human_push_ups@male@base', 'base', 1}
+        anim = {'amb@world_human_push_ups@male@base', 'base', 1}  -- dict, name, flag
     },
-    ['pull-ups'] = {
+    ['lift'] = {
         duration = 10000,
-        label = 'Doing Pull-Ups...',
-        anim = 'prop_human_muscle_chin_ups'
+        label = 'Doing lift...',
+        anim = {'amb@world_human_muscle_free_weights@male@barbell@base', 'base', 1},
+        prop = {'prop_curl_bar_01', 28422, vec3(0.0, 0.0, 0.0), vec3(0.0, 0.0, 0.0) }
     },
     ['crunches'] = {
         duration = 10000,
