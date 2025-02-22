@@ -2,6 +2,7 @@ fx_version 'cerulean'
 game 'gta5'
 
 description 'biq-gym'
+repository 'https://github.com/Biqydu/biq-gym'
 version '1.0.0'
 
 shared_script {
