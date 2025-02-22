@@ -6,7 +6,7 @@ end
 
 RegisterNetEvent('biq-gym:server:buyGymPass', function()
     local src = source
-    RemoveItem(src, 'money', Config.GymPassPrice)
+    TakeMoney(src, Config.GymPassPrice, 'Buy gym pass')
     AddItem(src, Config.GymPass)
 end)
 
@@ -74,7 +74,6 @@ end)
 --     end
 --   end
 -- end)
-
 
 
 AddEventHandler('onResourceStart', function(resourceName)

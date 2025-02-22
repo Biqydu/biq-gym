@@ -45,6 +45,8 @@ local function DoWork(type)
           success = Progress(Config.Progressbars['lift'].duration, Config.Progressbars['lift'].label, Config.Progressbars['lift'].anim, Config.Progressbars['lift'].prop)
       elseif type == 'crunches' then
           success = Progress(Config.Progressbars['crunches'].duration, Config.Progressbars['crunches'].label, Config.Progressbars['crunches'].anim)
+      elseif type == 'treadmill' then
+          success = Progress(Config.Progressbars['treadmill'].duration, Config.Progressbars['treadmill'].label, Config.Progressbars['treadmill'].anim)
       end
 
       if success then
@@ -54,6 +56,7 @@ local function DoWork(type)
       end
   end
 end
+
 
 local function CreateWorkTargets()
   for _, v in pairs(Config.WorkPositions) do
