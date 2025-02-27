@@ -25,3 +25,7 @@ The script requires the following dependencies:
 ## TODO
 
 - **Skill system**
+
+### Preview
+
+- [preview](https://youtu.be/xCw6atxpz6A)
