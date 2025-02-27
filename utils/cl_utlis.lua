@@ -4,6 +4,10 @@ elseif Config.Framework == 'esx' then
   ESX = exports['es_extended']:getSharedObject()
 end
 
+function debug(msg)
+    if Config.Debug then print('^3[DEBUG]^7', msg) end
+end
+
 ---@param duration number # length of progress
 ---@param label string # progress text
 ---@param anim table # {dict, clip}

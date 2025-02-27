@@ -3,6 +3,11 @@ if Config.Framework == 'qb' then
 elseif Config.Framework == 'esx' then 
   ESX = exports['es_extended']:getSharedObject()
 end
+lib.locale(Config.Locale or 'en')
+
+function debug(msg)
+    if Config.Debug then print('^3[DEBUG]^7', msg) end
+end
 
 ---@param src number # player source
 ---@param title string # noti title can be empty string for qb
@@ -56,24 +61,6 @@ function TakeMoney(src, amount, reason)
           return true
       else
           return false
-      end
-  end
-end
-
-function AddMoney(src, account, amount, reason)
-  if Config.Framework == 'qbx' then
-      qbx:AddMoney(src, account, amount, reason)
-  elseif Config.Framework == 'qb' then
-      local plr = qb.Functions.GetPlayer(src)
-      if not plr then return false end
-      plr.Functions.AddMoney(account, amount)
-  elseif Config.Framework == 'esx' then
-      local xPlayer = ESX.GetPlayerFromId(src)
-      if not xPlayer then return false end
-      if account == 'cash' then
-          xPlayer.addMoney(amount)
-      elseif account == 'bank' then
-          xPlayer.addAccountMoney('bank', amount)
       end
   end
 end
@@ -139,19 +126,36 @@ function IsPlayerHaveGymPass()
     HasItem(Config.GymPass)
 end
 
--- function GetPlayerCid(source)
---     if Config.Framework == 'qb' then
---         local playerCid = QBCore.Functions.GetPlayer(source).PlayerData.citizenid
---         print("QBCore Citizen ID: " .. playerCid)
---         return playerCid
---     elseif Config.Framework == 'qbox' then
---         local playerCid = exports.qbx_core:GetPlayer(source).PlayerData.citizenid
---         print("QBox Citizen ID: " .. playerCid)
---         return playerCid
---     elseif Config.Framework == 'esx' then
---         local xPlayer = ESX.GetPlayerFromId(source)
---         local playerCid = xPlayer.getIdentifier()
---         print("ESX Identifier: " .. playerCid)
---         return playerCid
---     end
--- end
+function GetPlayerIdentifier(source)
+    if Config.Framework == 'qb'  then
+        return QBCore.Functions.GetPlayer(source).PlayerData.citizenid
+    elseif Config.Framework == 'qbox' then
+        return exports.qbx_core:GetPlayer(source).PlayerData.citizenid
+    elseif Config.Framework == 'esx' then
+        return ESX.GetPlayerFromId(source).getIdentifier()
+    else
+        debug('Config.Framework is not set correctly')
+        return
+    end
+end
+
+function SendWebhook(webhook, color, name, message)
+    local currentDate = os.date("%Y-%m-%d")
+    local currentTime = os.date("%H:%M:%S")
+    local embed = {
+          {
+              ["color"] = color,
+              ["title"] = "**".. name .."**",
+              ["description"] = message,
+              ["footer"] = {
+                  ["text"] = currentTime.." "..currentDate,
+              },
+          }
+      }
+    PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = name, embeds = embed}), { ['Content-Type'] = 'application/json' })
+  end
+
+  function CheaterDetected(source)
+    SendWebhook(Config.Webhook, 7506394, 'biq-gym', locale('cheaterDetected', GetPlayerIdentifier(source)))
+    Config.CheaterDetected(source)
+end

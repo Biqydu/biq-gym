@@ -4,7 +4,7 @@ elseif Config.Framework == 'esx' then
     ESX = exports['es_extended']:getSharedObject()
 end
 
-lib.locale()
+lib.locale(Config.Locale or 'en')
 
 local workTimes = {}
 

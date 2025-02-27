@@ -2,16 +2,19 @@ Config = {}
 
 Config.Debug = true
 
-
-function debug(msg)
-    if Config.Debug then print('^3[DEBUG]^7', msg) end
-end
-
+Config.Locale = 'en' -- en, pl but you can add more in locales folder
 Config.Framework = 'qbox'            -- qb , qbox, esx
 Config.Notification = 'ox'         -- ox , qb
 Config.Inventory = 'ox'            -- ox , qb, esx
 Config.ProgressType = 'ox-circle'      -- ox-normal , ox-circle , qb
-Config.OxCirclePosition = 'bottom' -- only matters if Config.ProgressType = 'ox-circle'
+Config.OxCirclePosition = 0 -- only matters if Config.ProgressType = 'ox-circle'
+Config.Webhook = ''
+-- ^ webhook for logging
+
+Config.CheaterDetected = function(source) 
+    -- give your logic here, e.g. export from banning
+    -- DropPlayer(source, 'You have been detected cheating')
+end
 
 Config.GymPass = 'gym_pass' -- item name
 Config.GymPassPrice = 100
@@ -19,13 +22,14 @@ Config.GymPassPrice = 100
 Config.MaxWorks = 5
 Config.Cooldown = 10
 
+
 Config.Seller = {
     model = 'u_m_y_party_01',
     coords = vec4(-1195.24, -1577.26, 3.61, 122.35),
     target = {
         label = 'Buy membership',
         icon = 'fas fa-dumbbell',
-        distance = 2
+        distance = 2 -- do not set above 6
     }
 }
 
